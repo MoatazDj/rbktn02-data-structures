@@ -11,18 +11,19 @@ var Stack = function() {
 var stackMethods = {};
 
  stackMethods.size=function(){
-  return Object.keys(this.storage).length
+   return this.start
 }
 stackMethods.push=function(value){
-  this.storage[this.start]=value;
-  this.start++;
+  this.start++
+  this.storage[this.start]= value
 }
 stackMethods.pop=function(value){
-  var deletedValue=this.storage[this.start-1]
- delete this.storage[this.start-1];
- this.start--;
- return deletedValue
-
+      if(this.start>0){
+          var deletedVal = this.storage[this.start]
+          delete this.storage[this.start]
+          this.start--
+          return deletedVal
+      }
 //  AssertionError: expected 1 to be at most 0
 //  constructorPropertyCount = Object.keys(constructor).length;
 //  assuming(extendsConstructor).expect(constructorPropertyCount).to.be.above(0);

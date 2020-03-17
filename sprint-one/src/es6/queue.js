@@ -3,21 +3,21 @@ class Queue {
     constructor() {
       this.storage={}
       this.start=0;
-      this.end=0;
+      this.end = 0;
     }
     size(){
-      return this.end-this.start
+      return this.start-this.end
     }
     enqueue(value){
-      this.storage[this.end]=value
-      this.end++
+      this.storage[this.start]=value
+      this.start++
     }
     dequeue(){
-      if((this.end-this.start) > 0){
-        var deletedVal = this.storage[this.start]
-        delete this.storage[this.start]
-        this.start++
-        return deletedVal
-       }
+      if((this.start-this.end)>0){
+            var deletedVal = this.storage[this.end]
+            delete this.storage[this.end]
+            this.end++
+            return deletedVal
+      }
     }
 }

@@ -11,17 +11,18 @@ var Queue = function() {
 var queueMethods = {};
 
 queueMethods.size=function(){
-  return Object.keys(this.storage).length
+    return this.start-this.end
 }
 
 queueMethods.enqueue=function(value){
-  this.storage[this.end]=value
-  this.end++
+  this.storage[this.start]=value
+  this.start++
 }
 queueMethods.dequeue=function(){
-  var deletedVal=this.storage[this.start]
-
-  delete this.storage[this.start]
-  this.start++;
-  return deletedVal
+      if((this.start-this.end)>0){
+        var deletedVal = this.storage[this.end]
+        delete this.storage[this.end]
+        this.end++
+        return deletedVal
+      }
 }

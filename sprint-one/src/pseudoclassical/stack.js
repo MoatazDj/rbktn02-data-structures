@@ -4,17 +4,19 @@ var Stack = function() {
 };
 
 Stack.prototype.size=function(){
-  return Object.keys(this.storage).length
+  return this.start
 }
 Stack.prototype.push=function(value){
-  this.storage[this.start]=value
   this.start++
+  this.storage[this.start]=value
 }
 Stack.prototype.pop=function(){
-  var deletedvalue=this.storage[this.start-1];
-  delete this.storage[this.start-1];
-  this.start--;
-  return deletedvalue;
+  if(this.start>0){
+    var deletedVal = this.storage[this.start]
+    delete this.storage[this.start]
+    this.start--
+    return deletedVal
+  }
 }
 
 var stack= new Stack()

@@ -10,15 +10,17 @@ var Stack = function() {
 var stackMethods = {};
 
 stackMethods.size = function(){
-  return Object.keys(this.storage).length
+  return this.counter
 }
 stackMethods.push=function(value){
-   this.storage[this.counter]=value
-   this.counter++
+  this.counter ++
+  this.storage[this.counter] = value
 }
 stackMethods.pop=function(){
-  var deletedValue=this.storage[this.counter-1]
-  delete this.storage[this.counter-1]
-  this.counter--
-  return deletedValue
+    if(this.counter>0){
+        var deletedVal = this.storage[this.counter]
+        delete this.storage[this.counter]
+        this.counter--
+        return deletedVal
+    }
 }

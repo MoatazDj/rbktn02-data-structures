@@ -14,16 +14,15 @@ var Queue = function() {
 
   someInstance.dequeue = function() {
     if((end-start)>0){
-    var deletedValue=storage[start]
-    delete storage[start]
-    start++
-    return deletedValue
+        var deletedVal = storage[start]
+        delete storage[start]
+        start++
+        return deletedVal
     }
   };
 
   someInstance.size = function() {
-    //return Object.keys(storage).length
-    return end-start
+    return end - start
   };
 
   return someInstance;

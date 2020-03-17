@@ -9,15 +9,15 @@ class Stack {
     return this.start
   }
   push(value){
-    this.storage[this.start]=value
     this.start++
+    this.storage[this.start]=value
   }
   pop(){
     if(this.start>0){
-      var deletedVal=this.storage[this.start-1];
-      delete this.storage[this.start-1]
-      this.start--
-      return deletedVal
+        var deletedVal = this.storage[this.start]
+        delete this.storage[this.start]
+        this.start--
+        return deletedVal
     }
   }
 }
